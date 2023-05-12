@@ -8,35 +8,46 @@ interface Props {
     activities: Activity[];
     selectedActivity: Activity | undefined;
     selectActivity: (id: string) => void;
-    cancelSelectActivity : () => void;
-    editMode : boolean;
-    openForm : (id: string) => void;
-    closeForm : () => void,
-    createOrEdit : (activity: Activity) => void,
-    DeleteActivity: (id: string) => void
+    cancelSelectActivity: () => void;
+    editMode: boolean;
+    openForm: (id: string) => void;
+    closeForm: () => void,
+    createOrEdit: (activity: Activity) => void,
+    deleteActivity: (id: string) => void
+    submitting: boolean;
 
 
 }
 
-export default function ActivityDashboard({ activities, selectActivity, selectedActivity, cancelSelectActivity, editMode, closeForm, openForm, createOrEdit, DeleteActivity }: Props) {
+export default function ActivityDashboard({ activities, selectActivity, selectedActivity, cancelSelectActivity, editMode, closeForm, openForm, createOrEdit, deleteActivity, submitting }: Props) {
     return (
         <Grid>
             <Grid.Column width={10}>
-                
-                    <ActivityList activities={activities} selectActivity={selectActivity} DeleteActivity={DeleteActivity}/>
-                    
-                
+
+                <ActivityList
+                    activities={activities}
+                    selectActivity={selectActivity}
+                    deleteActivity={deleteActivity}
+                    submitting={submitting}
+                />
+
+
             </Grid.Column>
             <Grid.Column width={6}>
                 {selectedActivity && !editMode &&
-                    <ActivityDetails activity={selectedActivity} 
-                    cancelSelectActivity={cancelSelectActivity} 
-                    openForm={openForm}
+                    <ActivityDetails activity={selectedActivity}
+                        cancelSelectActivity={cancelSelectActivity}
+                        openForm={openForm}
                     />
                 }
                 {editMode &&
-                <ActivityForms activity={selectedActivity} closeForm={closeForm} createOrEdit={createOrEdit}/>
-                }   
+                    <ActivityForms
+                        activity={selectedActivity}
+                        closeForm={closeForm}
+                        submitting={submitting}
+                        createOrEdit={createOrEdit}
+                    />
+                }
             </Grid.Column>
 
         </Grid>
