@@ -17,6 +17,7 @@ export default observer( function ActivityDetails() {
 
     const {selectedActivity: activity, loadActivity, loadingInitial } = activityStore;
     const {id} = useParams();
+   
 
     useEffect(() => {
         if(id) loadActivity(id);
