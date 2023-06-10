@@ -50,6 +50,3 @@ export default function TestErrors() {
     )
 }
 
-function userState(arg0: null): [any, any] {
-    throw new Error('Function not implemented.');
-}
