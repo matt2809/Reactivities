@@ -1,11 +1,10 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {Button, Header, Segment} from "semantic-ui-react";
 import axios from 'axios';
 import ValidationError from './ValidationError';
 
 export default function TestErrors() {
-    const baseUrl = 'http://localhost:5000/api/'
-
+    const baseUrl = 'http://localhost:5000/api/';
     const [errors, setErrors] = useState(null);
 
     function handleNotFound() {
@@ -38,15 +37,14 @@ export default function TestErrors() {
             <Segment>
                 <Button.Group widths='7'>
                     <Button onClick={handleNotFound} content='Not Found' basic primary />
-                    <Button onClick={handleBadRequest} content='Bad Request' basic primary />
+                    <Button onClick={handleBadRequest} content='Bad Requests' basic primary />
                     <Button onClick={handleValidationError} content='Validation Error' basic primary />
                     <Button onClick={handleServerError} content='Server Error' basic primary />
                     <Button onClick={handleUnauthorised} content='Unauthorised' basic primary />
                     <Button onClick={handleBadGuid} content='Bad Guid' basic primary />
                 </Button.Group>
             </Segment>
-            {errors && <ValidationError errors={errors}/>}
+            {errors && <ValidationError errors={errors} />}
         </>
     )
 }
-
