@@ -18,7 +18,7 @@ useEffect(() => {
   }, [loadActivities, activityRegistry.size])
 
 
-  if (activityStore.loadingInitial) return <LoadingComponents content='Loading app' />
+  if (activityStore.loadingInitial) return <LoadingComponents content='Loading activities...' />
 
     return (
         <Grid>
